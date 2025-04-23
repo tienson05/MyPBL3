@@ -1,0 +1,6 @@
+@AgainPBL3_HostAddress = http://localhost:5283
+
+GET {{AgainPBL3_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
