@@ -12,7 +12,7 @@ namespace AgainPBL3.Models
         [Required]
         public int UserID { get; set; }
         [ForeignKey("UserID")]
-        public User Users { get; set; } = new User();
+        public User Users { get; set; } 
 
         public decimal TotalPrice { get; set; }
 

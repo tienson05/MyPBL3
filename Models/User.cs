@@ -20,7 +20,10 @@ namespace AgainPBL3.Models
         public int UserID { get; set; }
         
         [Required]
-        public string UserName { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
+
+        [Required]
+        public string Email { get; set; } = string.Empty ;
         
         [Required]
         public string HashedPassword { get; set; } = string.Empty ;
@@ -38,19 +41,20 @@ namespace AgainPBL3.Models
         [Required]
         public string Address {  get; set; } = string.Empty;
         
-        public double TotalPosts { get; set; } = 0;
+        public int TotalPosts { get; set; } = 0;
         
-        public double TotalPurchases { get; set; } = 0;
+        public int TotalPurchases { get; set; } = 0;
         
+        public double Balance { get; set; } = 0;
         public string Status {  get; set; } = "Active";
         
         public bool IsVerified { get; set; }
 
         public DateTime? LastLoginAt { get; set; }
 
-        public DateTime? UpdateAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
-        public DateTime CreateAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         [Url]
         public string AvatarUrl { get; set; } = string.Empty;
@@ -58,7 +62,7 @@ namespace AgainPBL3.Models
         public int RoleID { get; set; } = (int)UserRole.Buyer;
 
         [ForeignKey("RoleID")]
-        public Role Role { get; set; } = new Role();
+        public Role Role { get; set; }
 
         // Navigation properties
         public ICollection<UserPermission> UserPermissions { get; set; } = new HashSet<UserPermission>();
@@ -69,5 +73,7 @@ namespace AgainPBL3.Models
         public ICollection<Wishlist> Wishlists { get; set; } = new HashSet<Wishlist>();
         //trong ERD thieu CreateAt
 
+        [NotMapped]
+        public List<int> Permissions { get; set; } = new List<int>();
     }
 }

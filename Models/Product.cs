@@ -13,12 +13,12 @@ namespace AgainPBL3.Models
         [Required]
         public int UserID { get; set; }
         [ForeignKey("UserID")]
-        public User User { get; set; } = new User();
+        public User User { get; set; }
         
         [Required]
         public int CategoryID { get; set; }
         [ForeignKey("CategoryID")]
-        public Category Category { get; set; } = new Category();
+        public Category Category { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -38,8 +38,8 @@ namespace AgainPBL3.Models
 
         public string Status {  get; set; } = string.Empty;
 
-        public DateTime CreateAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public DateTime? UpdateAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

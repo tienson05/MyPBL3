@@ -15,9 +15,9 @@ namespace AgainPBL3.Models
         public bool IsActive { get; set; } = true;
 
         [ForeignKey("RoleID")]
-        public Role Role { get; set; } = new Role();
+        public Role Role { get; set; }
 
         [ForeignKey("PermissionID")]
-        public Permission Permission { get; set; } = new Permission();
+        public Permission Permission { get; set; }
     }
 }

@@ -169,4 +169,6 @@ D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\bin\Debug\net8.0\ru
 D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\obj\Debug\net8.0\AgainPBL3.sourcelink.json
+D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

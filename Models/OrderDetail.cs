@@ -12,12 +12,12 @@ namespace AgainPBL3.Models
         [Required]
         public int OrderID { get; set; }
         [ForeignKey("OrderID")]
-        public Order Order { get; set; } = new Order();
+        public Order Order { get; set; } 
 
         [Required]
         public int ProductID { get; set; }
         [ForeignKey("ProductID")]
-        public Product Product { get; set; } = new Product();
+        public Product Product { get; set; }
 
         public decimal Price { get; set; }
     }

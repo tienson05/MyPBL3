@@ -18,10 +18,10 @@ namespace AgainPBL3.Models
 
         // Khóa ngoại tới bảng Rating
         [ForeignKey("RatingID")]
-        public Rating Rating { get; set; } = new Rating();
+        public Rating Rating { get; set; }
 
         // Khóa ngoại tới bảng User cho người gửi
         [ForeignKey("SenderUserID")]
-        public User SenderUser { get; set; } = new User();
+        public User SenderUser { get; set; }
     }
 }

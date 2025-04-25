@@ -13,9 +13,9 @@ namespace AgainPBL3.Models
         public int PermissionID { get; set; }
 
         [ForeignKey("UserID")]
-        public User User { get; set; } = new User();
+        public User User { get; set; }
 
         [ForeignKey("PermissionID")]
-        public Permission Permission { get; set; } = new Permission();
+        public Permission Permission { get; set; }
     }
 }
