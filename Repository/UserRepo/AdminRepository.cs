@@ -120,13 +120,15 @@ namespace AgainPBL3.Repository.UserRepo
                 .Include(u => u.UserRatings)
                 .Include(u => u.Wishlists)
                 .Include(u => u.Products)
-                .Include(u => u.Orders)
+                .Include(u => u.BuyerOrders) // tai da sua o day
+                .Include(u => u.VendorOrders) //
                 .FirstOrDefaultAsync(u => u.UserID == id);
 
             _context.UserRatings.RemoveRange(user.UserRatings);
             _context.Wishlists.RemoveRange(user.Wishlists);
             _context.Products.RemoveRange(user.Products);
-            _context.Orders.RemoveRange(user.Orders);
+            _context.Orders.RemoveRange(user.BuyerOrders);// tai da sua o day
+            _context.Orders.RemoveRange(user.VendorOrders);
 
             user.Status = "Inactive";
 

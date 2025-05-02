@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using System.Text;
+using AgainPBL3.Repository.ProductRepo;
+using AgainPBL3.Repository.CategoryRepo;
+using AgainPBL3.Repository.OrderRepo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +21,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Đăng ký dịch vụ UserRepository và các dịch vụ khác
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
-//builder.Services.AddScoped<IProductRepository, ProductRepository>();
-//builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 // Đăng ký AccountService vào DI container
 builder.Services.AddScoped<AccountService>();

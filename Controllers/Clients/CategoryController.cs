@@ -1,4 +1,6 @@
-﻿using AgainPBL3.Interfaces;
+﻿using AgainPBL3.Dtos.Category;
+using AgainPBL3.Interfaces;
+using AgainPBL3.Mappers;
 using AgainPBL3.Models;
 using AgainPBL3.Repository;
 using AgainPBL3.Services;
@@ -24,10 +26,18 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCategory([FromBody] Category category)
+        public async Task<IActionResult> AddCategory([FromBody] CategoryDto dto)
         {
-            var createdcategory = await _categoryRepository.AddCategory(category);
-            return CreatedAtAction(nameof(GetCategoryById), new { id = createdcategory.CategoryId }, createdcategory);
+            var category = new Category
+            {
+                CategoryName = dto.CategoryName,
+                CreatedAt = DateTime.Now
+            };
+
+            var createdCategory = await _categoryRepository.AddCategory(category);
+            var categoryDto = createdCategory.MapToCategoryDto();
+
+            return CreatedAtAction(nameof(GetCategoryById), new { id = createdCategory.CategoryId }, categoryDto);
         }
 
         [HttpGet("{id}")]
@@ -45,9 +55,9 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Category>> UpdateCategory([FromRoute] int id, [FromBody] Category category)
+        public async Task<ActionResult<Category>> UpdateCategory([FromRoute] int id, [FromBody] CategoryDto dto)
         {
-            var newCategory = await _categoryRepository.UpdateCategory(id, category.CategoryName);
+            var newCategory = await _categoryRepository.UpdateCategory(id, dto.CategoryName);
 
             return newCategory != null ? newCategory : NotFound("Category not found!");
         }

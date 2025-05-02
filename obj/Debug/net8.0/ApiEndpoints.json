@@ -60,24 +60,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PhoneNumber",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "searchUserDto",
+        "Type": "AgainPBL3.Dtos.Account.SearchUserDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -107,49 +92,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Password",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Gender",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "BirthOfDate",
-        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "PhoneNumber",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Address",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "AvatarUrl",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "signupDto",
+        "Type": "AgainPBL3.Dtos.Account.SignupDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -221,69 +166,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Password",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Gender",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "BirthOfDate",
-        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "PhoneNumber",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Address",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "AvatarUrl",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Status",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Role",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Permissions",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "IsVerified",
-        "Type": "System.Boolean",
-        "IsRequired": false
+        "Name": "createUserDto",
+        "Type": "AgainPBL3.Dtos.Account.CreateUserDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -339,24 +224,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PhoneNumber",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "searchUserDto",
+        "Type": "AgainPBL3.Dtos.Account.SearchUserDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -402,59 +272,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Gender",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "BirthOfDate",
-        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "PhoneNumber",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Address",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "AvatarUrl",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Status",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Role",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "IsVerified",
-        "Type": "System.Boolean",
-        "IsRequired": false
+        "Name": "updateUserOfAdminDto",
+        "Type": "AgainPBL3.Dtos.Account.UpdateUserOfAdminDto",
+        "IsRequired": true
       },
       {
         "Name": "id",
@@ -493,8 +313,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "category",
-        "Type": "AgainPBL3.Models.Category",
+        "Name": "dto",
+        "Type": "AgainPBL3.Dtos.Category.CategoryDto",
         "IsRequired": true
       }
     ],
@@ -540,8 +360,8 @@
         "IsRequired": true
       },
       {
-        "Name": "category",
-        "Type": "AgainPBL3.Models.Category",
+        "Name": "dto",
+        "Type": "AgainPBL3.Dtos.Category.CategoryDto",
         "IsRequired": true
       }
     ],
@@ -572,6 +392,161 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AgainPBL3.Controllers.Clients.OrderController",
+    "Method": "GetListOrder",
+    "RelativePath": "api/order",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "BuyerId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "VendorID",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "TotalPrice",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderDetailID",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProductID",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "NameProduct",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AgainPBL3.Controllers.Clients.OrderController",
+    "Method": "AddOrder",
+    "RelativePath": "api/order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AgainPBL3.Dtos.Order.OrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "AgainPBL3.Models.Order",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AgainPBL3.Controllers.Clients.OrderController",
+    "Method": "GetOrderByID",
+    "RelativePath": "api/order/id",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "AgainPBL3.Models.Order",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AgainPBL3.Controllers.Clients.OrderController",
+    "Method": "DeleteOrder",
+    "RelativePath": "api/order/id",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AgainPBL3.Controllers.Clients.OrderController",
+    "Method": "UpdateOrder",
+    "RelativePath": "api/order/id",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "dto",
+        "Type": "AgainPBL3.Dtos.Order.OrderUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "AgainPBL3.Models.Order",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "HeThongMoiGioiDoCu.Controllers.Clients.ProductsController",

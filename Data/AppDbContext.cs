@@ -57,6 +57,28 @@ namespace AgainPBL3.Data
                 .WithMany()
                 .HasForeignKey(w => w.SenderUserID)
                 .OnDelete(DeleteBehavior.Restrict);  // Tắt cascade delete
+                                                     // Cấu hình ánh xạ tên cột (đã có từ trước)
+            modelBuilder.Entity<Order>()
+                .Property(o => o.CreatedAt)
+                .HasColumnName("CreatedAt");
+
+            modelBuilder.Entity<Order>()
+                .Property(o => o.CompletedAt)
+                .HasColumnName("CompletedAt");
+
+            // Cấu hình quan hệ giữa Order và User cho Buyer
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.Buyer)
+                .WithMany(u => u.BuyerOrders)
+                .HasForeignKey(o => o.BuyerId)
+                .OnDelete(DeleteBehavior.Restrict); // Tránh cascade delete gây xung đột
+
+            // Cấu hình quan hệ giữa Order và User cho Vendor
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.Vendor)
+                .WithMany(u => u.VendorOrders)
+                .HasForeignKey(o => o.VendorId)
+                .OnDelete(DeleteBehavior.Restrict); // Tránh cascade delete gây xung đột
         }
 
     }

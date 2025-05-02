@@ -67,7 +67,8 @@ namespace AgainPBL3.Models
         // Navigation properties
         public ICollection<UserPermission> UserPermissions { get; set; } = new HashSet<UserPermission>();
         public ICollection<RolePermission> RolePermissions { get; set; } = new HashSet<RolePermission>();
-        public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+        public ICollection<Order> BuyerOrders { get; set; } = new HashSet<Order>();
+        public ICollection<Order> VendorOrders { get; set; } = new HashSet<Order>();
         public ICollection<Product> Products { get; set; } = new HashSet<Product>();
         public ICollection<UserRating> UserRatings { get; set; } = new HashSet<UserRating>(); //xem lai cach design ERD
         public ICollection<Wishlist> Wishlists { get; set; } = new HashSet<Wishlist>();

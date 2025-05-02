@@ -12,68 +12,19 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "Username": {
-                    "type": "string"
-                  },
-                  "Email": {
-                    "type": "string"
-                  },
-                  "Password": {
-                    "type": "string"
-                  },
-                  "Name": {
-                    "type": "string"
-                  },
-                  "Gender": {
-                    "type": "boolean"
-                  },
-                  "BirthOfDate": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "PhoneNumber": {
-                    "type": "string"
-                  },
-                  "Address": {
-                    "type": "string"
-                  },
-                  "AvatarUrl": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "Username": {
-                  "style": "form"
-                },
-                "Email": {
-                  "style": "form"
-                },
-                "Password": {
-                  "style": "form"
-                },
-                "Name": {
-                  "style": "form"
-                },
-                "Gender": {
-                  "style": "form"
-                },
-                "BirthOfDate": {
-                  "style": "form"
-                },
-                "PhoneNumber": {
-                  "style": "form"
-                },
-                "Address": {
-                  "style": "form"
-                },
-                "AvatarUrl": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/SignupDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupDto"
               }
             }
           }
@@ -187,36 +138,25 @@
         "tags": [
           "Account"
         ],
-        "parameters": [
-          {
-            "name": "Username",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Email",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "PhoneNumber",
-            "in": "query",
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchUserDto"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -421,97 +361,19 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "Username": {
-                    "type": "string"
-                  },
-                  "Email": {
-                    "type": "string"
-                  },
-                  "Password": {
-                    "type": "string"
-                  },
-                  "Name": {
-                    "type": "string"
-                  },
-                  "Gender": {
-                    "type": "boolean"
-                  },
-                  "BirthOfDate": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "PhoneNumber": {
-                    "type": "string"
-                  },
-                  "Address": {
-                    "type": "string"
-                  },
-                  "AvatarUrl": {
-                    "type": "string"
-                  },
-                  "Status": {
-                    "type": "string"
-                  },
-                  "Role": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "Permissions": {
-                    "type": "array",
-                    "items": {
-                      "type": "integer",
-                      "format": "int32"
-                    }
-                  },
-                  "IsVerified": {
-                    "type": "boolean"
-                  }
-                }
-              },
-              "encoding": {
-                "Username": {
-                  "style": "form"
-                },
-                "Email": {
-                  "style": "form"
-                },
-                "Password": {
-                  "style": "form"
-                },
-                "Name": {
-                  "style": "form"
-                },
-                "Gender": {
-                  "style": "form"
-                },
-                "BirthOfDate": {
-                  "style": "form"
-                },
-                "PhoneNumber": {
-                  "style": "form"
-                },
-                "Address": {
-                  "style": "form"
-                },
-                "AvatarUrl": {
-                  "style": "form"
-                },
-                "Status": {
-                  "style": "form"
-                },
-                "Role": {
-                  "style": "form"
-                },
-                "Permissions": {
-                  "style": "form"
-                },
-                "IsVerified": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
               }
             }
           }
@@ -541,81 +403,19 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "Username": {
-                    "type": "string"
-                  },
-                  "Email": {
-                    "type": "string"
-                  },
-                  "Name": {
-                    "type": "string"
-                  },
-                  "Gender": {
-                    "type": "boolean"
-                  },
-                  "BirthOfDate": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "PhoneNumber": {
-                    "type": "string"
-                  },
-                  "Address": {
-                    "type": "string"
-                  },
-                  "AvatarUrl": {
-                    "type": "string"
-                  },
-                  "Status": {
-                    "type": "string"
-                  },
-                  "Role": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "IsVerified": {
-                    "type": "boolean"
-                  }
-                }
-              },
-              "encoding": {
-                "Username": {
-                  "style": "form"
-                },
-                "Email": {
-                  "style": "form"
-                },
-                "Name": {
-                  "style": "form"
-                },
-                "Gender": {
-                  "style": "form"
-                },
-                "BirthOfDate": {
-                  "style": "form"
-                },
-                "PhoneNumber": {
-                  "style": "form"
-                },
-                "Address": {
-                  "style": "form"
-                },
-                "AvatarUrl": {
-                  "style": "form"
-                },
-                "Status": {
-                  "style": "form"
-                },
-                "Role": {
-                  "style": "form"
-                },
-                "IsVerified": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/UpdateUserOfAdminDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserOfAdminDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserOfAdminDto"
               }
             }
           }
@@ -632,36 +432,25 @@
         "tags": [
           "Account"
         ],
-        "parameters": [
-          {
-            "name": "Username",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Email",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "PhoneNumber",
-            "in": "query",
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchUserDto"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -745,17 +534,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Category"
+                "$ref": "#/components/schemas/CategoryDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Category"
+                "$ref": "#/components/schemas/CategoryDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Category"
+                "$ref": "#/components/schemas/CategoryDto"
               }
             }
           }
@@ -825,17 +614,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Category"
+                "$ref": "#/components/schemas/CategoryDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Category"
+                "$ref": "#/components/schemas/CategoryDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Category"
+                "$ref": "#/components/schemas/CategoryDto"
               }
             }
           }
@@ -881,6 +670,253 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/order/id": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/order": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "BuyerId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "VendorID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "TotalPrice",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDetailID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "ProductID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NameProduct",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
           }
         }
       }
@@ -1153,9 +1189,95 @@
         },
         "additionalProperties": false
       },
+      "CategoryDto": {
+        "type": "object",
+        "properties": {
+          "categoryName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateOrderDetailDto": {
+        "type": "object",
+        "properties": {
+          "productID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateUserDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "boolean"
+          },
+          "birthOfDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "avatarUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "isVerified": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "Order": {
         "required": [
-          "userID"
+          "buyerId",
+          "vendorId"
         ],
         "type": "object",
         "properties": {
@@ -1163,11 +1285,18 @@
             "type": "integer",
             "format": "int32"
           },
-          "userID": {
+          "buyerId": {
             "type": "integer",
             "format": "int32"
           },
-          "users": {
+          "buyer": {
+            "$ref": "#/components/schemas/User"
+          },
+          "vendorId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vendor": {
             "$ref": "#/components/schemas/User"
           },
           "totalPrice": {
@@ -1212,9 +1341,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "order": {
-            "$ref": "#/components/schemas/Order"
-          },
           "productID": {
             "type": "integer",
             "format": "int32"
@@ -1225,6 +1351,69 @@
           "price": {
             "type": "number",
             "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderDto": {
+        "type": "object",
+        "properties": {
+          "buyerID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vendorID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "orderDetails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateOrderDetailDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderUpdateDto": {
+        "type": "object",
+        "properties": {
+          "orderID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "buyerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vendorID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDetailID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1427,6 +1616,28 @@
         },
         "additionalProperties": false
       },
+      "SearchUserDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "SigninDto": {
         "type": "object",
         "properties": {
@@ -1435,6 +1646,48 @@
             "nullable": true
           },
           "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignupDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "boolean"
+          },
+          "birthOfDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "avatarUrl": {
             "type": "string",
             "nullable": true
           }
@@ -1520,6 +1773,55 @@
           "avatarUrl": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateUserOfAdminDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "boolean"
+          },
+          "birthOfDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "avatarUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isVerified": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -1630,7 +1932,14 @@
             },
             "nullable": true
           },
-          "orders": {
+          "buyerOrders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Order"
+            },
+            "nullable": true
+          },
+          "vendorOrders": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Order"

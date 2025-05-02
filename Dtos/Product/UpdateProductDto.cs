@@ -8,7 +8,7 @@ namespace AgainPBL3.Dtos.Product
         public int? UserID { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
-        public decimal? Price { get; set; }
+        public double? Price { get; set; }
         public int? CategoryID { get; set; }
         public string? Condition { get; set; }
         public string? Images { get; set; }

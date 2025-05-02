@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace AgainPBL3.Models
 {
@@ -10,8 +11,9 @@ namespace AgainPBL3.Models
         public int OrderDetailID { get; set; }
 
         [Required]
-        public int OrderID { get; set; }
+        public int OrderID { get; set; } 
         [ForeignKey("OrderID")]
+        [JsonIgnore]
         public Order Order { get; set; } 
 
         [Required]

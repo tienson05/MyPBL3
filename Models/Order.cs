@@ -10,9 +10,16 @@ namespace AgainPBL3.Models
         public int OrderID { get; set; }
 
         [Required]
-        public int UserID { get; set; }
-        [ForeignKey("UserID")]
-        public User Users { get; set; } 
+        public int BuyerId { get; set; }
+
+        [ForeignKey("BuyerId")]
+        public User Buyer { get; set; }
+
+        [Required]
+        public int VendorId { get; set; }
+
+        [ForeignKey("VendorId")]
+        public User Vendor { get; set; }
 
         public decimal TotalPrice { get; set; }
 

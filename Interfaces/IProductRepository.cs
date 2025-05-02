@@ -4,7 +4,7 @@ namespace AgainPBL3.Interfaces
 {
     public interface IProductRepository
     {
-        Task<Product> GetListProduct(
+        Task<PagedResult<Product>> GetListProduct(
             int? categoryId,
             int? userId,
             string status,
@@ -20,7 +20,7 @@ namespace AgainPBL3.Interfaces
             int ID,
             string? Title,
             string? Description,
-            decimal? Price,
+            double? Price,
             int? CategoryID,
             string? Condition,
             string? Images,
