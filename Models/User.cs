@@ -56,7 +56,6 @@ namespace AgainPBL3.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        [Url]
         public string AvatarUrl { get; set; } = string.Empty;
 
         public int RoleID { get; set; } = (int)UserRole.Buyer;

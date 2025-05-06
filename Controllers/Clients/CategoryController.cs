@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HeThongMoiGioiDoCu.Controllers.Clients
 {
-    [Route("api/category")]
+    [Route("api/admin/category")]
     [ApiController]
     public class CategoryController : ControllerBase
     {

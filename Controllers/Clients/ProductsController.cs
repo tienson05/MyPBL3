@@ -1,5 +1,7 @@
-﻿using AgainPBL3.Dtos.Product;
+﻿using System.Security.Claims;
+using AgainPBL3.Dtos.Product;
 using AgainPBL3.Interfaces;
+using AgainPBL3.Mappers;
 using AgainPBL3.Models;
 using AgainPBL3.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -59,9 +61,12 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
         }
 
         [HttpPost]
-        public async Task<ActionResult<Product>> AddProducts([FromBody] Product product)
+        public async Task<ActionResult<Product>> AddProducts([FromBody] CreateProductDto product)
         {
-            var newProduct = await _productRepository.AddProduct(product);
+            //var userName = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            //var userRole = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+            var userId = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            var newProduct = await _productRepository.AddProduct(product.MapToProduct(Convert.ToInt32(userId)));
             return CreatedAtAction(
                 nameof(GetProductByID),
                 new { id = newProduct.ProductID },

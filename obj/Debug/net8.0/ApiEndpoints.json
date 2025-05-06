@@ -599,7 +599,7 @@
     "Parameters": [
       {
         "Name": "product",
-        "Type": "AgainPBL3.Models.Product",
+        "Type": "AgainPBL3.Dtos.Product.CreateProductDto",
         "IsRequired": true
       }
     ],

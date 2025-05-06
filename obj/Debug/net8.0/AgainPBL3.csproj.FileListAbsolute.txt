@@ -171,7 +171,6 @@ D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\bin\Debug\net8.0\ru
 D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\obj\Debug\net8.0\AgainPBL3.sourcelink.json
 D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\AgainPBL3.csproj.AssemblyReference.cache
 E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\AgainPBL3.GeneratedMSBuildEditorConfig.editorconfig
 E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\AgainPBL3.AssemblyInfoInputs.cache
@@ -346,3 +345,4 @@ E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\AgainPBL3.csproj.Up2Date
 E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\AgainPBL3.genruntimeconfig.cache
 E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\ref\AgainPBL3.dll
 E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

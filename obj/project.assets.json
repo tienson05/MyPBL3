@@ -4878,23 +4878,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nvtva\\.nuget\\packages\\": {},
+    "C:\\Users\\ADMIN\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Hoctap\\NewPBL3\\MyPBL3\\AgainPBL3.csproj",
+      "projectUniqueName": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\AgainPBL3.csproj",
       "projectName": "AgainPBL3",
-      "projectPath": "E:\\Hoctap\\NewPBL3\\MyPBL3\\AgainPBL3.csproj",
-      "packagesPath": "C:\\Users\\nvtva\\.nuget\\packages\\",
-      "outputPath": "E:\\Hoctap\\NewPBL3\\MyPBL3\\obj\\",
+      "projectPath": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\AgainPBL3.csproj",
+      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\nvtva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4971,7 +4971,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
