@@ -85,9 +85,10 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetUser([FromRoute] int id)
+        public async Task<IActionResult> GetUser()
         {
-            var user = await _clientRepository.GetUserByIdAsync(id);
+            var userId = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            var user = await _clientRepository.GetUserByIdAsync(Convert.ToInt32(userId));
             if (user == null)
             {
                 return NotFound("User not found");
@@ -101,8 +102,22 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
             return Ok(user.MapToUserViewDto());
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUser([FromRoute] int id)
+        {
+            //var userName = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            //var userRole = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+            //var userId = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            var user = await _clientRepository.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
 
-        [Authorize]
+            return Ok(user.MapToUserViewDto());
+        }
+
+        //[Authorize]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserDto updateUserDto)
         {
@@ -111,8 +126,8 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
             var userId = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             var user = updateUserDto.MapToClientUpdateQuery(Convert.ToInt32(userId));
             await _clientRepository.UpdateUserAsync(user);
-
-            return Ok("Updated successfully!");
+            var u = await _clientRepository.GetUserByIdAsync(Convert.ToInt32(userId));
+            return Ok(u);
         }
 
         [Authorize]

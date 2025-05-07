@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace AgainPBL3.Models
 {
@@ -13,12 +14,14 @@ namespace AgainPBL3.Models
         public int BuyerId { get; set; }
 
         [ForeignKey("BuyerId")]
+        [JsonIgnore]
         public User Buyer { get; set; }
 
         [Required]
         public int VendorId { get; set; }
 
         [ForeignKey("VendorId")]
+        [JsonIgnore]
         public User Vendor { get; set; }
 
         public decimal TotalPrice { get; set; }

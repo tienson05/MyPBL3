@@ -84,6 +84,18 @@
         "tags": [
           "Account"
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/account/{id}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -489,7 +501,7 @@
         }
       }
     },
-    "/api/category": {
+    "/api/admin/category": {
       "get": {
         "tags": [
           "Category"
@@ -556,7 +568,7 @@
         }
       }
     },
-    "/api/category/{id}": {
+    "/api/admin/category/{id}": {
       "get": {
         "tags": [
           "Category"
@@ -1323,15 +1335,9 @@
             "type": "integer",
             "format": "int32"
           },
-          "buyer": {
-            "$ref": "#/components/schemas/User"
-          },
           "vendorId": {
             "type": "integer",
             "format": "int32"
-          },
-          "vendor": {
-            "$ref": "#/components/schemas/User"
           },
           "totalPrice": {
             "type": "number",
@@ -1452,41 +1458,6 @@
         },
         "additionalProperties": false
       },
-      "Permission": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "permissionID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "rolePermissions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RolePermission"
-            },
-            "nullable": true
-          },
-          "userPermissions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserPermission"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "Product": {
         "required": [
           "categoryID",
@@ -1504,15 +1475,9 @@
             "type": "integer",
             "format": "int32"
           },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
           "categoryID": {
             "type": "integer",
             "format": "int32"
-          },
-          "category": {
-            "$ref": "#/components/schemas/Category"
           },
           "title": {
             "maxLength": 50,
@@ -1556,31 +1521,6 @@
         },
         "additionalProperties": false
       },
-      "Rating": {
-        "type": "object",
-        "properties": {
-          "ratingID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "ratingValue": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "userRatings": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserRating"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "ResetPasswordDto": {
         "type": "object",
         "properties": {
@@ -1591,61 +1531,6 @@
           "newPassword": {
             "type": "string",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Role": {
-        "required": [
-          "roleName"
-        ],
-        "type": "object",
-        "properties": {
-          "roleID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "roleName": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "rolePermissions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RolePermission"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "RolePermission": {
-        "type": "object",
-        "properties": {
-          "rolePermissionID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "permissionID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "roleID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "role": {
-            "$ref": "#/components/schemas/Role"
-          },
-          "permission": {
-            "$ref": "#/components/schemas/Permission"
           }
         },
         "additionalProperties": false
@@ -1856,241 +1741,6 @@
           },
           "isVerified": {
             "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "User": {
-        "required": [
-          "address",
-          "email",
-          "hashedPassword",
-          "name",
-          "phoneNumber",
-          "username"
-        ],
-        "type": "object",
-        "properties": {
-          "userID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "username": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "email": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "hashedPassword": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "name": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "gender": {
-            "type": "boolean"
-          },
-          "birthOfDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "phoneNumber": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "address": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "totalPosts": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "totalPurchases": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "balance": {
-            "type": "number",
-            "format": "double"
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
-          },
-          "isVerified": {
-            "type": "boolean"
-          },
-          "lastLoginAt": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "avatarUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "roleID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "role": {
-            "$ref": "#/components/schemas/Role"
-          },
-          "userPermissions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserPermission"
-            },
-            "nullable": true
-          },
-          "rolePermissions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RolePermission"
-            },
-            "nullable": true
-          },
-          "buyerOrders": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Order"
-            },
-            "nullable": true
-          },
-          "vendorOrders": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Order"
-            },
-            "nullable": true
-          },
-          "products": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Product"
-            },
-            "nullable": true
-          },
-          "userRatings": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserRating"
-            },
-            "nullable": true
-          },
-          "wishlists": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Wishlist"
-            },
-            "nullable": true
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UserPermission": {
-        "type": "object",
-        "properties": {
-          "userPermissionID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "permissionID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "permission": {
-            "$ref": "#/components/schemas/Permission"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UserRating": {
-        "required": [
-          "ratingID",
-          "senderUserID"
-        ],
-        "type": "object",
-        "properties": {
-          "userRatingID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "ratingID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "senderUserID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "comment": {
-            "type": "string",
-            "nullable": true
-          },
-          "rating": {
-            "$ref": "#/components/schemas/Rating"
-          },
-          "senderUser": {
-            "$ref": "#/components/schemas/User"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Wishlist": {
-        "type": "object",
-        "properties": {
-          "wishlistID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "productID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "product": {
-            "$ref": "#/components/schemas/Product"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false

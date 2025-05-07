@@ -61,7 +61,7 @@ namespace AgainPBL3.Controllers.Clients
         }
         //[Authorize]
         [HttpPost]
-        public async Task<ActionResult<Order>> AddOrder([FromBody]OrderDto dto)
+        public async Task<ActionResult<Order>> AddOrder([FromBody] OrderDto dto)
         {
             var order = dto.OrderDtoToOrder();
             _orderRepository.AddOrder(order);

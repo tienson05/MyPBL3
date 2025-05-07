@@ -110,10 +110,11 @@ namespace AgainPBL3.Repository.ProductRepo
 
         public async Task<Product> GetProductByID(int ID)
         {
-            return await _context
+            var re = await _context
                 .Products.Include(p => p.Category)
                 .Include(p => p.User)
                 .FirstAsync(p => p.ProductID == ID);
+            return re;
         }
 
         public async Task<Product?> UpdateProduct(

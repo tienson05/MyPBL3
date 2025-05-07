@@ -3,20 +3,60 @@
   "WorkspaceRootPath": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\controllers\\clients\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:controllers\\clients\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\controllers\\clients\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:controllers\\clients\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\controllers\\clients\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:controllers\\clients\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\controllers\\clients\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:controllers\\clients\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\controllers\\admin\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:controllers\\admin\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\repository\\userrepo\\clientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:repository\\userrepo\\clientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\repository\\productrepo\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:repository\\productrepo\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\controllers\\clients\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:controllers\\clients\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\dtos\\product\\createproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:dtos\\product\\createproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\dtos\\account\\signupdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:dtos\\account\\signupdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\dtos\\account\\userviewdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:dtos\\account\\userviewdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\controllers\\clients\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|solutionrelative:controllers\\clients\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A6AFA4C3-E30C-1C39-7A38-BAA94B0ADF38}|AgainPBL3.csproj|d:\\projects\\study\\school\\ki_2_nam_2\\pbl3\\againpbl3\\againpbl3\\queries\\adminupdatequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,32 +83,69 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ProductsController.cs",
-              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\ProductsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Clients\\ProductsController.cs",
-              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\ProductsController.cs",
-              "RelativeToolTip": "Controllers\\Clients\\ProductsController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAQwD4AAAASAAAAAAAAAA==",
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Models\\Order.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Models\\Order.cs",
+              "RelativeToolTip": "Models\\Order.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAzwBYAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T14:15:58.411Z",
+              "WhenOpened": "2025-05-07T17:42:33.923Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\CategoryController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Clients\\CategoryController.cs",
-              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\CategoryController.cs",
-              "RelativeToolTip": "Controllers\\Clients\\CategoryController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Clients\\AccountController.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\Clients\\AccountController.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAwwIEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T07:37:39.379Z",
+              "WhenOpened": "2025-05-06T15:29:31.671Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ClientRepository.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Repository\\UserRepo\\ClientRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\UserRepo\\ClientRepository.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Repository\\UserRepo\\ClientRepository.cs",
+              "RelativeToolTip": "Repository\\UserRepo\\ClientRepository.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAArwEkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T13:45:26.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAC4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T15:01:26.997Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\OrderController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Clients\\OrderController.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\OrderController.cs",
+              "RelativeToolTip": "Controllers\\Clients\\OrderController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwEEAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T16:26:26.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Admin\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\Admin\\AccountController.cs",
@@ -80,19 +157,103 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ClientRepository.cs",
-              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Repository\\UserRepo\\ClientRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\UserRepo\\ClientRepository.cs",
-              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Repository\\UserRepo\\ClientRepository.cs",
-              "RelativeToolTip": "Repository\\UserRepo\\ClientRepository.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Repository\\ProductRepo\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\ProductRepo\\ProductRepository.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Repository\\ProductRepo\\ProductRepository.cs",
+              "RelativeToolTip": "Repository\\ProductRepo\\ProductRepository.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAswHQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T13:45:26.75Z"
+              "WhenOpened": "2025-05-07T15:38:17.382Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Clients\\ProductsController.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\ProductsController.cs",
+              "RelativeToolTip": "Controllers\\Clients\\ProductsController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwDUAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T14:15:58.411Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserViewDto.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Dtos\\Account\\UserViewDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\Account\\UserViewDto.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Dtos\\Account\\UserViewDto.cs",
+              "RelativeToolTip": "Dtos\\Account\\UserViewDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:21:58.678Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreateProductDto.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Dtos\\Product\\CreateProductDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\Product\\CreateProductDto.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Dtos\\Product\\CreateProductDto.cs",
+              "RelativeToolTip": "Dtos\\Product\\CreateProductDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:49:59.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SignupDto.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Dtos\\Account\\SignupDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\Account\\SignupDto.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Dtos\\Account\\SignupDto.cs",
+              "RelativeToolTip": "Dtos\\Account\\SignupDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T15:23:30.318Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Models\\Product.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Models\\Product.cs",
+              "RelativeToolTip": "Models\\Product.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:59:18.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "Models\\Category.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Models\\Category.cs",
+              "RelativeToolTip": "Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:59:55.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\CategoryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Clients\\CategoryController.cs",
+              "ToolTip": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Controllers\\Clients\\CategoryController.cs",
+              "RelativeToolTip": "Controllers\\Clients\\CategoryController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T07:37:39.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "AdminUpdateQuery.cs",
               "DocumentMoniker": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\Queries\\AdminUpdateQuery.cs",
               "RelativeDocumentMoniker": "Queries\\AdminUpdateQuery.cs",

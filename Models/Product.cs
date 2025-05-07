@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace AgainPBL3.Models
 {
@@ -13,11 +14,13 @@ namespace AgainPBL3.Models
         [Required]
         public int UserID { get; set; }
         [ForeignKey("UserID")]
+        [JsonIgnore]
         public User User { get; set; }
         
         [Required]
         public int CategoryID { get; set; }
         [ForeignKey("CategoryID")]
+        [JsonIgnore]
         public Category Category { get; set; }
 
         [Required]
