@@ -45,10 +45,11 @@ namespace AgainPBL3.Controllers.Clients
             [FromQuery] int? OrderDetailID = null,
             [FromQuery] int? ProductID = null,
             [FromQuery] string? NameProduct = null,
+            [FromQuery] string? PayMethod = null,
             [FromQuery] int pageNumber=1,
             [FromQuery] int pageSize= 10)
         {
-            var result = await _orderRepository.GetListOrder(BuyerId,VendorID,TotalPrice,Status,OrderDetailID,ProductID,NameProduct, pageNumber,pageSize);
+            var result = await _orderRepository.GetListOrder(BuyerId,VendorID,TotalPrice,Status,OrderDetailID,ProductID,NameProduct,PayMethod, pageNumber,pageSize);
             return Ok(result);
         }
         [Authorize]
@@ -72,7 +73,7 @@ namespace AgainPBL3.Controllers.Clients
         [HttpPut ("id")]
         public async Task<ActionResult<Order>> UpdateOrder(int id, [FromBody] OrderUpdateDto dto)
         {
-            var UpdateOrder = await _orderRepository.UpdateOrder(id, dto.BuyerId, dto.VendorID, dto.TotalPrice, dto.Status, dto.OrderDetailID, dto.ProductID, dto.Price);
+            var UpdateOrder = await _orderRepository.UpdateOrder(id, dto.BuyerId, dto.VendorID, dto.TotalPrice, dto.Status, dto.OrderDetailID, dto.ProductID, dto.Price,dto.CancelReason,dto.PayMethod,dto.Quantity);
             if (UpdateOrder == null)
                 return NotFound();
             return Ok(UpdateOrder);

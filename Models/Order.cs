@@ -30,7 +30,6 @@ namespace AgainPBL3.Models
         public DateTime? CompletedAt { get; set; }
         public DateTime CreatedAt { get; set; }
         public string PayMethod { get; set; }
-
         public ICollection<OrderDetail> OrderDetails { get; set; } = new HashSet<OrderDetail>();
     }
 

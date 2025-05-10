@@ -1069,6 +1069,13 @@
             }
           },
           {
+            "name": "PayMethod",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "pageNumber",
             "in": "query",
             "schema": {
@@ -1502,6 +1509,10 @@
           "price": {
             "type": "number",
             "format": "double"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1674,9 +1685,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "product": {
-            "$ref": "#/components/schemas/Product"
-          },
           "price": {
             "type": "number",
             "format": "double"
@@ -1702,6 +1710,14 @@
           "totalPrice": {
             "type": "number",
             "format": "double"
+          },
+          "payMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "cancelReason": {
+            "type": "string",
+            "nullable": true
           },
           "orderDetails": {
             "type": "array",
@@ -1745,6 +1761,18 @@
             "format": "int32"
           },
           "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "payMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "cancelReason": {
+            "type": "string",
+            "nullable": true
+          },
+          "quantity": {
             "type": "integer",
             "format": "int32"
           }

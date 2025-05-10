@@ -13,10 +13,13 @@ namespace AgainPBL3.Mappers
                 VendorId = dto.VendorID,
                 TotalPrice = dto.TotalPrice,
                 CreatedAt = DateTime.UtcNow,
+                PayMethod = dto.PayMethod,
+                CancelReason = dto.CancelReason,
                 OrderDetails = dto.OrderDetails?.Select(od => new OrderDetail
                 {
                     ProductID = od.ProductID,
-                    Price = od.Price
+                    Price = od.Price,
+                    Quantity = od.Quantity,
                 }).ToList()
             };
         }

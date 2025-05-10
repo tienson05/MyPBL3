@@ -19,6 +19,7 @@ namespace AgainPBL3.Models
         [Required]
         public int ProductID { get; set; }
         [ForeignKey("ProductID")]
+        [JsonIgnore]
         public Product Product { get; set; }
 
         public decimal Price { get; set; }

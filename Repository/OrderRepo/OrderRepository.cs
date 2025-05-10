@@ -47,6 +47,7 @@ namespace AgainPBL3.Repository.OrderRepo
             int? OrderDetailID,
             int? ProductID,
             string? NameProduct,
+            string? PayMethod,
             int pageNumber,
             int pageSize)
         {
@@ -71,9 +72,14 @@ namespace AgainPBL3.Repository.OrderRepo
             {
                 querry= querry.Where(o=>o.Status == Status);
             }
-            if (NameProduct != null) {
-                querry = querry.Where(o=>o.OrderDetails.Any(od => od.Product.Title.Contains(NameProduct)));
-                    }
+            if (PayMethod != null)
+            {
+                querry = querry.Where(o => o.PayMethod == PayMethod);
+            }
+            if (NameProduct != null)
+            {
+                querry = querry.Where(o => o.OrderDetails.Any(od => od.Product.Title.Contains(NameProduct)));
+            }
             var totalCount = await querry.CountAsync();
 
             var data = await querry
@@ -90,26 +96,6 @@ namespace AgainPBL3.Repository.OrderRepo
             };
         }
 
-        //public async Task<PagedResult<Order>> GetListOrderByUserID(int id, int pageNumber, int pageSize)
-        //{
-        //    var query = _context.Orders.Include(o => o.Buyer)
-        //        .Include(o => o.Vendor)
-        //        .Include(o => o.OrderDetails)
-        //        .ThenInclude(o => o.Product)
-        //        .Where(o => o.BuyerId == id || o.VendorID == id);
-        //    var totalCount = await query.CountAsync();
-
-        //    var data = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
-
-        //    return new PagedResult<Order>
-        //    {
-        //        Data = data,
-        //        TotalItems = totalCount,
-        //        PageNumber = pageNumber,
-        //        PageSize = pageSize
-        //    };
-        //}
-
         public async Task<Order?> GetOrderByID(int id)
         {
             return await _context.Orders
@@ -120,7 +106,7 @@ namespace AgainPBL3.Repository.OrderRepo
                 .FirstOrDefaultAsync(o => o.OrderID == id);
         }
 
-        public async Task<Order?> UpdateOrder(int  OrderID, int BuyerId, int VendorID, decimal TotalPrice, string Status,int OrderDetailID, int ProductID,int price )
+        public async Task<Order?> UpdateOrder(int OrderID, int BuyerId, int VendorID, decimal TotalPrice, string Status, int OrderDetailID, int ProductID, int price, string CancelReason, string PayMethod, int Quantity)
         {
             var orderUpdate = await _context.Orders.Include(o=> o.OrderDetails).FirstOrDefaultAsync(o=>o.OrderID==OrderID);
             if (orderUpdate == null)
@@ -131,6 +117,8 @@ namespace AgainPBL3.Repository.OrderRepo
             orderUpdate.VendorId = VendorID;
             orderUpdate.TotalPrice = TotalPrice;
             orderUpdate.Status = Status;
+            orderUpdate.CancelReason = CancelReason;
+            orderUpdate.PayMethod = PayMethod;
             var orderDetail = await _context.OrderDetails.FirstOrDefaultAsync(o=>o.OrderDetailID ==OrderDetailID);
             if (orderDetail == null)
             {
@@ -138,6 +126,7 @@ namespace AgainPBL3.Repository.OrderRepo
             }
             orderDetail.ProductID = OrderID;
             orderDetail.Price = price;
+            orderDetail.Quantity = Quantity;
             await _context.SaveChangesAsync();
             return orderUpdate;
 

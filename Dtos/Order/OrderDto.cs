@@ -7,6 +7,8 @@ namespace AgainPBL3.Dtos.Order
         public int BuyerID { get; set; }
         public int VendorID { get; set; }
         public decimal TotalPrice { get; set; }
+        public string PayMethod { get; set; }
+        public string CancelReason { get; set; }
         public List<CreateOrderDetailDto> OrderDetails { get; set; }
     }
 }
