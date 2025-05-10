@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\AgainPBL3.csproj": {}
+    "E:\\Hoctap\\NewPBL3\\MyPBL3\\AgainPBL3.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\AgainPBL3.csproj": {
+    "E:\\Hoctap\\NewPBL3\\MyPBL3\\AgainPBL3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\AgainPBL3.csproj",
+        "projectUniqueName": "E:\\Hoctap\\NewPBL3\\MyPBL3\\AgainPBL3.csproj",
         "projectName": "AgainPBL3",
-        "projectPath": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\AgainPBL3.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Study\\School\\Ki_2_nam_2\\PBL3\\AgainPBL3\\AgainPBL3\\obj\\",
+        "projectPath": "E:\\Hoctap\\NewPBL3\\MyPBL3\\AgainPBL3.csproj",
+        "packagesPath": "C:\\Users\\nvtva\\.nuget\\packages\\",
+        "outputPath": "E:\\Hoctap\\NewPBL3\\MyPBL3\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nvtva\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -60,6 +60,10 @@
               "target": "Package",
               "version": "[9.0.4, )"
             },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[9.0.4, )"
@@ -94,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

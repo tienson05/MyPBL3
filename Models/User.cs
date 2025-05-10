@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
+using System.Text.Json.Serialization;
 
 namespace AgainPBL3.Models
 {
@@ -59,6 +60,8 @@ namespace AgainPBL3.Models
         public string AvatarUrl { get; set; } = string.Empty;
 
         public int RoleID { get; set; } = (int)UserRole.Buyer;
+        [JsonIgnore]
+        public Cart Cart { get; set; }
 
         [ForeignKey("RoleID")]
         public Role Role { get; set; }

@@ -81,6 +81,7 @@ namespace AgainPBL3.Repository.ProductRepo
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
+            var cat = await _context.Carts.ToListAsync();
             return new PagedResult<Product>
             {
                 TotalItems = totalItems,

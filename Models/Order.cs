@@ -25,12 +25,11 @@ namespace AgainPBL3.Models
         public User Vendor { get; set; }
 
         public decimal TotalPrice { get; set; }
-
         public string Status { get; set; } = string.Empty;
-
+        public string CancelReason { get; set; } =string.Empty;
         public DateTime? CompletedAt { get; set; }
-
         public DateTime CreatedAt { get; set; }
+        public string PayMethod { get; set; }
 
         public ICollection<OrderDetail> OrderDetails { get; set; } = new HashSet<OrderDetail>();
     }

@@ -344,5 +344,6 @@ E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\staticwebassets.pack.json
 E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\AgainPBL3.csproj.Up2Date
 E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\AgainPBL3.genruntimeconfig.cache
 E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\ref\AgainPBL3.dll
-E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Projects\Study\School\Ki_2_nam_2\PBL3\AgainPBL3\AgainPBL3\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\Hoctap\NewPBL3\MyPBL3\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
+E:\Hoctap\NewPBL3\MyPBL3\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

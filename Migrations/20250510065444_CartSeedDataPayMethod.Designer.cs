@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgainPBL3.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250425104601_v1")]
-    partial class v1
+    [Migration("20250510065444_CartSeedDataPayMethod")]
+    partial class CartSeedDataPayMethod
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,51 @@ namespace AgainPBL3.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("AgainPBL3.Models.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserID")
+                        .IsUnique();
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("AgainPBL3.Models.CartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("CartItems");
+                });
 
             modelBuilder.Entity("AgainPBL3.Models.Category", b =>
                 {
@@ -56,11 +101,24 @@ namespace AgainPBL3.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
+                    b.Property<int>("BuyerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CancelReason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("CompletedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CompletedAt");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreatedAt");
+
+                    b.Property<string>("PayMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -69,12 +127,14 @@ namespace AgainPBL3.Migrations
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("UserID")
+                    b.Property<int>("VendorId")
                         .HasColumnType("int");
 
                     b.HasKey("OrderID");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("BuyerId");
+
+                    b.HasIndex("VendorId");
 
                     b.ToTable("Orders");
                 });
@@ -94,6 +154,9 @@ namespace AgainPBL3.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("OrderDetailID");
@@ -141,7 +204,7 @@ namespace AgainPBL3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreateAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -168,7 +231,7 @@ namespace AgainPBL3.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime?>("UpdateAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserID")
@@ -276,7 +339,7 @@ namespace AgainPBL3.Migrations
                     b.Property<DateTime?>("BirthOfDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("CreateAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -317,10 +380,10 @@ namespace AgainPBL3.Migrations
                     b.Property<int>("TotalPurchases")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdateAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -417,15 +480,53 @@ namespace AgainPBL3.Migrations
                     b.ToTable("Wishlists");
                 });
 
-            modelBuilder.Entity("AgainPBL3.Models.Order", b =>
+            modelBuilder.Entity("AgainPBL3.Models.Cart", b =>
                 {
-                    b.HasOne("AgainPBL3.Models.User", "Users")
-                        .WithMany("Orders")
-                        .HasForeignKey("UserID")
+                    b.HasOne("AgainPBL3.Models.User", "User")
+                        .WithOne("Cart")
+                        .HasForeignKey("AgainPBL3.Models.Cart", "UserID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AgainPBL3.Models.CartItem", b =>
+                {
+                    b.HasOne("AgainPBL3.Models.Cart", "Cart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Users");
+                    b.HasOne("AgainPBL3.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("AgainPBL3.Models.Order", b =>
+                {
+                    b.HasOne("AgainPBL3.Models.User", "Buyer")
+                        .WithMany("BuyerOrders")
+                        .HasForeignKey("BuyerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("AgainPBL3.Models.User", "Vendor")
+                        .WithMany("VendorOrders")
+                        .HasForeignKey("VendorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Buyer");
+
+                    b.Navigation("Vendor");
                 });
 
             modelBuilder.Entity("AgainPBL3.Models.OrderDetail", b =>
@@ -565,6 +666,11 @@ namespace AgainPBL3.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("AgainPBL3.Models.Cart", b =>
+                {
+                    b.Navigation("CartItems");
+                });
+
             modelBuilder.Entity("AgainPBL3.Models.Category", b =>
                 {
                     b.Navigation("Products");
@@ -594,7 +700,10 @@ namespace AgainPBL3.Migrations
 
             modelBuilder.Entity("AgainPBL3.Models.User", b =>
                 {
-                    b.Navigation("Orders");
+                    b.Navigation("BuyerOrders");
+
+                    b.Navigation("Cart")
+                        .IsRequired();
 
                     b.Navigation("Products");
 
@@ -603,6 +712,8 @@ namespace AgainPBL3.Migrations
                     b.Navigation("UserPermissions");
 
                     b.Navigation("UserRatings");
+
+                    b.Navigation("VendorOrders");
 
                     b.Navigation("Wishlists");
                 });

@@ -10,6 +10,7 @@ using System.Text;
 using AgainPBL3.Repository.ProductRepo;
 using AgainPBL3.Repository.CategoryRepo;
 using AgainPBL3.Repository.OrderRepo;
+using AgainPBL3.Repository.CartRepo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 
 // Đăng ký AccountService vào DI container
 builder.Services.AddScoped<AccountService>();
