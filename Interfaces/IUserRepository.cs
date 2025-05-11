@@ -10,7 +10,7 @@ namespace AgainPBL3.Interfaces
         Task<List<User>> GetAllUserAsync();
         Task AddUserAsync(User user);
         Task UpdateLastLoginAsync(int id);
-        Task<List<User>> SearchUserAsync(UserSearchQuery user);
+        Task<List<User>> SearchUserAsync(string keyword);
         Task ResetPasswordAsync(string newPassword, int id);
     }
 }

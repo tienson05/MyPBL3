@@ -29,20 +29,36 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
         [HttpPost("signup")]
         public async Task<IActionResult> Signup([FromBody] SignupDto signupDto)
         {
-            var existingEmail = await _clientRepository.GetUserByEmailAsync(signupDto.Email);
-
-            if (existingEmail != null)
+            try
             {
-                return Conflict("User with this email already exists.");
+                var existingEmail = await _clientRepository.GetUserByEmailAsync(signupDto.Email);
+                if (existingEmail != null)
+                {
+                    return Conflict("User with this email already exists.");
+                }
+            }
+            catch (InvalidOperationException ex)
+            {                
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { status = "error", message = "An error occurred during signup" });
             }
 
             var hashedPassword = _accountService.HashPassword(signupDto.Password);
 
             var user = signupDto.MapToUser(hashedPassword);
+            try
+            {
+                await _clientRepository.AddUserAsync(user);
 
-            await _clientRepository.AddUserAsync(user);
+                return Ok(user.MapToUserViewDto());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { status = "error", message = "An error occurred during signup" });
+            }
 
-            return Ok(user.MapToUserViewDto());
         }
 
         [HttpPost("signin")]
@@ -50,7 +66,7 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
         {
             if (string.IsNullOrWhiteSpace(signinDto.Email))
             {
-                return BadRequest("Email is required hehrhrh!");
+                return BadRequest("Email is required!");
             }
 
             if (string.IsNullOrWhiteSpace(signinDto.Password))
@@ -75,15 +91,32 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
         }
 
         [Authorize]
-        [HttpPost("logout")] 
+        [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
             var userId = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            await _clientRepository.UpdateLastLoginAsync(Convert.ToInt32(userId));
-            return Ok(new { message = "Logged out successfully!" });
+            
+            if (string.IsNullOrEmpty(userId) || !int.TryParse(userId, out var id))
+            {
+                return Unauthorized(new { status = "error", message = "User not authenticated" });
+            }
+
+            try
+            {
+                await _clientRepository.UpdateLastLoginAsync(id);
+                return Ok(new { status = "success", message = "Logged out successfully" });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { status = "error", message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { status = "error", message = "An error occurred during logout" });
+            }
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public async Task<IActionResult> GetUser()
         {
@@ -102,27 +135,10 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
             return Ok(user.MapToUserViewDto());
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser([FromRoute] int id)
-        {
-            //var userName = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
-            //var userRole = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
-            //var userId = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            var user = await _clientRepository.GetUserByIdAsync(id);
-            if (user == null)
-            {
-                return NotFound("User not found");
-            }
-
-            return Ok(user.MapToUserViewDto());
-        }
-
         //[Authorize]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserDto updateUserDto)
         {
-            //var userName = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
-            //var userRole = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
             var userId = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             var user = updateUserDto.MapToClientUpdateQuery(Convert.ToInt32(userId));
             await _clientRepository.UpdateUserAsync(user);
@@ -130,28 +146,17 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
             return Ok(u);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("search")]
-        public async Task<IActionResult> SearchUser([FromBody] SearchUserDto searchUserDto) {
-            if (searchUserDto == null)
-            {
-                return BadRequest("Invalid search parameters.");
-            }
-            
-            List<User> users = await _clientRepository.SearchUserAsync(searchUserDto.MapToUserSearchQuery());
-            List<UserViewDto> userList = new List<UserViewDto>();
-            if (users.Count == 0) return NotFound("Users not found!");
-            else
-            {
-                foreach (var user in users)
-                {
-                    userList.Add(user.MapToUserViewDto());
-                }
-            }
-            return Ok(userList.ToList());
+        public async Task<IActionResult> SearchUser([FromQuery] string keyword) {
+                      
+            var users = await _clientRepository.SearchUserAsync(keyword);
+            if (users.Count == 0 || users == null) return NotFound("No users found matching the given keyword.");
+            var userList = users.Select(u => u.MapToUserViewDto()).ToList();
+            return Ok(userList);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("registerseller")]
         public async Task<IActionResult> RegisterSeller()
         {
@@ -160,7 +165,7 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
             return Ok();
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPut("resetpassword")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto resetPasswordDto)
         {
@@ -178,7 +183,7 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
                 return BadRequest("Password is incorrect");
             }
             await _clientRepository.ResetPasswordAsync(resetPasswordDto.NewPassword, Convert.ToInt32(userId));
-            return Ok();
+            return Ok(user);
         }
     }
 }

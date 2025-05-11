@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Linq.Expressions;
 using AgainPBL3.Data;
 using AgainPBL3.Interfaces;
 using AgainPBL3.Models;
@@ -86,7 +87,7 @@ namespace AgainPBL3.Repository.UserRepo
                 existingUser.AvatarUrl = user.AvatarUrl;
                 existingUser.Status = user.Status;
                 existingUser.RoleID = user.RoleID;
-                existingUser.UpdatedAt = DateTime.Now;
+                existingUser.UpdatedAt = DateTime.UtcNow;
 
                 await _context.SaveChangesAsync();
             }
@@ -155,31 +156,41 @@ namespace AgainPBL3.Repository.UserRepo
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<User>> SearchUserAsync(UserSearchQuery user)
+        public async Task<List<User>> SearchUserAsync(string keyword)
         {
-            var query = _context.Users.AsQueryable();
+            if (string.IsNullOrWhiteSpace(keyword))
+                return await _context.Users
+                    .Where(u => u.RoleID != (int)UserRole.Admin)
+                    .ToListAsync();
 
-            if (!string.IsNullOrWhiteSpace(user.Username))
-            {
-                query = query.Where(u => u.Username.Contains(user.Username));
-            }
+            keyword = keyword.Trim().ToLower();
 
-            if (!string.IsNullOrWhiteSpace(user.Name))
-            {
-                query = query.Where(u => u.Name.Contains(user.Name));
-            }
+            Expression<Func<User, bool>> roleFilter = u => u.RoleID != (int)UserRole.Admin;
+            // Ưu tiên tìm theo Name
+            var users = await _context.Users
+                .Where(u => u.Name.ToLower().Contains(keyword))
+                .Where(roleFilter)
+                .ToListAsync();
 
-            if (!string.IsNullOrWhiteSpace(user.PhoneNumber))
-            {
-                query = query.Where(u => u.PhoneNumber.Contains(user.PhoneNumber));
-            }
+            if (users.Any())
+                return users;
 
-            if (!string.IsNullOrWhiteSpace(user.Email))
-            {
-                query = query.Where(u => u.Email.Contains(user.Email));
-            }
+            // Nếu không có, tìm theo Username
+            users = await _context.Users
+                .Where(u => u.Username.ToLower().Contains(keyword))
+                .Where(roleFilter)
+                .ToListAsync();
 
-            return await query.ToListAsync();
+            if (users.Any())
+                return users;
+
+            // Nếu vẫn không có, tìm theo Email
+            users = await _context.Users
+                .Where(u => u.Email.ToLower().Contains(keyword))
+                .Where (roleFilter)
+                .ToListAsync();
+
+            return users;
         }
 
 

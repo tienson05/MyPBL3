@@ -43,7 +43,10 @@ namespace AgainPBL3.Controllers.Admin
             {
                 return NotFound("User not found");
             }
-
+            if(user.RoleID != 1 && user.RoleID != 4)
+            {
+                return BadRequest("You are not admin or manager");
+            }
             if (_accountService.VerifyPassword(user.HashedPassword, signinDto.Password))
             {
                 var token = _jwtTokenProviderService.GenerateToken(user.Name, user.UserID, user.RoleID);
@@ -53,7 +56,7 @@ namespace AgainPBL3.Controllers.Admin
             return Unauthorized("Invalid password");
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
@@ -62,7 +65,7 @@ namespace AgainPBL3.Controllers.Admin
             return Ok(new { message = "Logged out successfully" }); 
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpDelete("delete/{id}")]
         public async Task<ActionResult> Delete([FromRoute] int id)
         {
@@ -70,7 +73,7 @@ namespace AgainPBL3.Controllers.Admin
             return Ok();
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("ban/{id}")]
         public async Task<IActionResult> Ban([FromRoute] int id)
         {
@@ -78,7 +81,7 @@ namespace AgainPBL3.Controllers.Admin
             return Ok();
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("undoban/{id}")]
         public async Task<IActionResult> UndoBan([FromRoute] int id)
         {
@@ -86,7 +89,7 @@ namespace AgainPBL3.Controllers.Admin
             return Ok();
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser([FromRoute] int id)
         {
@@ -99,10 +102,10 @@ namespace AgainPBL3.Controllers.Admin
                 return NotFound("User not found");
             }
 
-            return Ok(user.MapToUserViewDto());
+            return Ok(user);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAllUser()
         {
@@ -120,38 +123,31 @@ namespace AgainPBL3.Controllers.Admin
             return Ok(new { message = "Creating user successfully" });
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserOfAdminDto updateUserOfAdminDto, [FromRoute] int id)
         {
             var user = updateUserOfAdminDto.MapToAdminUpdateQuery(id);
             await _adminRepository.UpdateUserAsync(user);
             return Ok();
-        }
+        }      
 
-        [Authorize]
         [HttpGet("search")]
-        public async Task<IActionResult> SearchUser([FromBody] SearchUserDto searchUserDto)
+        public async Task<IActionResult> SearchUser([FromQuery] string keyword)
         {
-            if (searchUserDto == null)
-            {
-                return BadRequest("Invalid search parameters.");
-            }
+            var users = await _adminRepository.SearchUserAsync(keyword);
 
-            List<User> users = await _adminRepository.SearchUserAsync(searchUserDto.MapToUserSearchQuery());
-            List<UserViewDto> userList= new List<UserViewDto>();
-            if (users.Count == 0) return NotFound("Users not found!");
-            else
-            {
-                foreach (var user in users)
-                {
-                    userList.Add(user.MapToUserViewDto());
-                }
-            }
-            return Ok(userList.ToList());
+            if (users == null || users.Count == 0)
+                return NotFound("No users found matching the given keyword.");
+
+            var userList = users
+                .Select(user => user.MapToUserViewDto())
+                .ToList();
+
+            return Ok(userList);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPut("resetpassword")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto resetPasswordDto)
         {

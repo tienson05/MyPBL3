@@ -85,17 +85,6 @@ namespace AgainPBL3.Mapper
                 IsVerified = updateUserOfAdminDto.IsVerified,
             };
         }
-
-        public static UserSearchQuery MapToUserSearchQuery(this SearchUserDto searchUserDto) {
-            return new UserSearchQuery
-            {
-                Username = searchUserDto.Username,
-                Email = searchUserDto.Email,
-                Name = searchUserDto.Name,
-                PhoneNumber = searchUserDto.PhoneNumber,
-            };
-        }
-
         public static UserViewDto MapToUserViewDto(this User user)
         {
             return new UserViewDto

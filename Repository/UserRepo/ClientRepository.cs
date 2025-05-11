@@ -1,4 +1,6 @@
 ﻿using System.Data;
+using System.Data.Common;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using AgainPBL3.Data;
 using AgainPBL3.Interfaces;
@@ -25,37 +27,46 @@ namespace AgainPBL3.Repository.UserRepo
         {
             _context = context;
         }
-        private async Task<List<int>> LoadPermissions(int userId, int roleId)
-        {
-            List<int> permissions = new List<int>();
-
-            if (roleId == 4) // is Manager
+        private async Task<List<int>> LoadPermissions(int roleId)
+        {         
+            try
             {
-                permissions = await _context.UserPermissions
-                    .Where(up => up.UserID == userId)
-                    .Select(up => up.PermissionID)
-                    .ToListAsync();
-            }
-            else
-            {
-                permissions = await _context.RolePermissions
+                var permissions = await _context.RolePermissions
                     .Where(rp => rp.RoleID == roleId)
                     .Select(rp => rp.PermissionID)
                     .ToListAsync();
+
+                return permissions;
+            }           
+            catch (Exception ex)
+            {
+                throw new Exception("An unexpected error occurred while loading permissions.", ex);
             }
 
-            return permissions;
         }
         public async Task AddUserAsync(User user)
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-
+            try
+            {
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+            }           
+            catch (Exception ex)
+            {
+                throw new Exception("An unexpected error occurred while loading permissions.", ex);
+            }
         }
 
         public async Task<List<User>> GetAllUserAsync()
         {
-            return await _context.Users.Where(u => u.RoleID != 1 && u.RoleID != 4).ToListAsync();
+            try
+            {
+                return await _context.Users.Where(u => u.RoleID != 1 && u.RoleID != 4).ToListAsync();
+            }           
+            catch (Exception ex)
+            {
+                throw new Exception("An unexpected error occurred while loading permissions.", ex);
+            }
         }
 
         public async Task<User> GetUserByEmailAsync(string email)
@@ -63,75 +74,143 @@ namespace AgainPBL3.Repository.UserRepo
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
             {
-                return null;
+                throw new InvalidOperationException($"User with email {email} not found.");
             }
-            var permissions = await LoadPermissions(user.UserID, user.RoleID);
-            user.Permissions = permissions;
-            return user;
+            try
+            {
+                var permissions = await LoadPermissions(user.RoleID);
+                user.Permissions = permissions;
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An unexpected error occurred while loading.", ex);
+            }
         }
 
         public async Task<User> GetUserByIdAsync(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserID == id);
-            if (user == null) return null;
-            var permissions = await LoadPermissions(user.UserID, user.RoleID);
-            user.Permissions = permissions;
-            return user;
+            if (user == null)
+            {
+                throw new InvalidOperationException($"User with email {id} not found.");
+            }
+            try
+            {
+                var permissions = await LoadPermissions(user.RoleID);
+                user.Permissions = permissions;
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An unexpected error occurred while loading.", ex);
+            }
         }
 
         public async Task RegisterSellerAsync(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserID == id);
+            if (user == null)
+            {
+                throw new InvalidOperationException($"User not found.");
+            }
+
             user.RoleID = (int)UserRole.Seller;
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new Exception("Failed to register seller due to database error.", ex);
+            }
         }
 
         public async Task ResetPasswordAsync(string newPassword, int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserID == id);
+            if (user == null)
+            {
+                throw new InvalidOperationException($"User with ID {id} not found.");
+            }
             user.HashedPassword = newPassword;
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new Exception("Failed to update password due to database error.", ex);
+            }
         }
 
-        public async Task<List<User>> SearchUserAsync(UserSearchQuery user)
+        public async Task<List<User>> SearchUserAsync(string keyword)
         {
-            var query = _context.Users.AsQueryable();
+            if (string.IsNullOrWhiteSpace(keyword))
+                return await _context.Users
+                    .Where(u => u.RoleID != (int)UserRole.Admin && u.RoleID != (int)UserRole.Manager)
+                    .ToListAsync();
 
-            if (!string.IsNullOrWhiteSpace(user.Username))
-            {
-                query = query.Where(u => u.Username.Contains(user.Username));
-            }
+            keyword = keyword.Trim().ToLower();
 
-            if (!string.IsNullOrWhiteSpace(user.Name))
-            {
-                query = query.Where(u => u.Name.Contains(user.Name));
-            }
+            // Định nghĩa bộ lọc role để tái sử dụng
+            Expression<Func<User, bool>> roleFilter = u =>
+                u.RoleID != (int)UserRole.Admin && u.RoleID != (int)UserRole.Manager;
 
-            if (!string.IsNullOrWhiteSpace(user.PhoneNumber))
-            {
-                query = query.Where(u => u.PhoneNumber.Contains(user.PhoneNumber));
-            }
+            // 1. Tìm theo Name
+            var users = await _context.Users
+                .Where(u => u.Name.ToLower().Contains(keyword))
+                .Where(roleFilter)
+                .ToListAsync();
 
-            if (!string.IsNullOrWhiteSpace(user.Email))
-            {
-                query = query.Where(u => u.Email.Contains(user.Email));
-            }
+            if (users.Any())
+                return users;
 
-            return await query.ToListAsync();
+            // 2. Tìm theo Username
+            users = await _context.Users
+                .Where(u => u.Username.ToLower().Contains(keyword))
+                .Where(roleFilter)
+                .ToListAsync();
+
+            if (users.Any())
+                return users;
+
+            // 3. Tìm theo Email
+            users = await _context.Users
+                .Where(u => u.Email.ToLower().Contains(keyword))
+                .Where(roleFilter)
+                .ToListAsync();
+
+            return users;
         }
 
         public async Task UpdateLastLoginAsync(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserID == id);
-            user.LastLoginAt = DateTime.Now;
-            await _context.SaveChangesAsync();
+            
+            if (user == null)
+            {
+                throw new InvalidOperationException($"User not found.");
+            }
+            user.LastLoginAt = DateTime.UtcNow;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex) { 
+                throw new Exception("Failed to update password due to database error", ex);
+            }
         }
 
         public async Task UpdateUserAsync(ClientUpdateQuery user)
         {
             var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.UserID == user.UserID);
-            if (existingUser != null)
+            if (existingUser == null)
             {
+                throw new InvalidOperationException($"User not found.");
+            }
+
                 existingUser.Username = user.Username;
                 existingUser.Email = user.Email;
                 existingUser.Name = user.Name;
@@ -140,11 +219,15 @@ namespace AgainPBL3.Repository.UserRepo
                 existingUser.PhoneNumber = user.PhoneNumber;
                 existingUser.Address = user.Address;
                 existingUser.AvatarUrl = user.AvatarUrl;
-                existingUser.UpdatedAt = DateTime.Now;
-
+                existingUser.UpdatedAt = DateTime.UtcNow;
+            try
+            {
                 await _context.SaveChangesAsync();
             }
-
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update user due to database error", ex);
+            }
         }
     }
 }
