@@ -74,6 +74,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseHttpsRedirection();
+
 // Áp dụng CORS
 app.UseCors("AllowFrontend");
 

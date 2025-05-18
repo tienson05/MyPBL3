@@ -5,6 +5,7 @@ using AgainPBL3.Repository.OrderRepo;
 using AgainPBL3.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.WebSockets;
+using System.Security.Claims;
 
 namespace AgainPBL3.Controllers.Clients
 {
@@ -13,11 +14,9 @@ namespace AgainPBL3.Controllers.Clients
     public class CartController : ControllerBase
     {
         private readonly ICartRepository _cartRepository;
-        private readonly AccountService _accountService;
-        public CartController(ICartRepository cartRepository, AccountService accountService)
+        public CartController(ICartRepository cartRepository)
         {
             _cartRepository = cartRepository;
-            _accountService = accountService;
         }
 
         [HttpGet("id")]
@@ -33,12 +32,14 @@ namespace AgainPBL3.Controllers.Clients
             }
         }
 
-        [HttpGet("userId")]
-        public async Task<ActionResult<Cart>> GetCartByUserId(int userId)
+        [HttpGet]
+        public async Task<IActionResult> GetCartByUserId()
         {
+            var userId = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             try
             {
-                return await _cartRepository.GetCartByUserID(userId);
+                return  Ok(await _cartRepository.GetCartByUserID(Convert.ToInt32(userId)));
+                
             }
             catch (Exception ex)
             {
@@ -46,17 +47,22 @@ namespace AgainPBL3.Controllers.Clients
             }
         }
         [HttpPost]
-        public async Task<ActionResult<Cart>> AddCartItemToCart([FromBody] AddCartItemDto dto)
+        public async Task<ActionResult<Cart>> AddCartItemToCart([FromBody] List<AddCartItemDto> dtos)
         {
-            try
+            var userId = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+            foreach (var dto in dtos)
             {
-                var cartItem = await _cartRepository.AddCartItemtToCart(dto.userId, dto.productId, dto.quantity);
-                return Ok(cartItem);
+                try
+                {
+                    var cartItem = await _cartRepository.AddCartItemtToCart(Convert.ToInt32(userId), dto.ProductId, dto.Quantity);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new { Message = ex.Message });
+                }
             }
-            catch (Exception ex)
-            {
-                return BadRequest(new { Message = ex.Message });
-            }
+            return Ok();
         }
         [HttpPut("update/{cartItemId}")]
         public async Task<ActionResult<CartItem>> UpdateCartItem ( int cartItemId, [FromBody] UpdateCartDto dto)

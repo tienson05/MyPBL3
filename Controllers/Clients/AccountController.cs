@@ -38,7 +38,8 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
                 }
             }
             catch (InvalidOperationException ex)
-            {                
+            {      
+                // Để trống để program có thể chạy xuống code phía dưới 
             }
             catch (Exception ex)
             {
@@ -56,7 +57,7 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { status = "error", message = "An error occurred during signup" });
+                return StatusCode(500, new { status = "error", message = ex.Message });
             }
 
         }
@@ -74,20 +75,25 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
                 return BadRequest("Password is required!");
             }
 
-            var user = await _clientRepository.GetUserByEmailAsync(signinDto.Email);
-
-            if (user == null || user.RoleID == 1 || user.RoleID == 4)
+            try
             {
-                return NotFound("User not found!");
-            }
+                var user = await _clientRepository.GetUserByEmailAsync(signinDto.Email);
+                if (user == null || user.RoleID == 1 || user.RoleID == 4)
+                {
+                    return NotFound(new { message = "User not found" });
+                }
 
-            if (_accountService.VerifyPassword(user.HashedPassword, signinDto.Password))
+                if (_accountService.VerifyPassword(user.HashedPassword, signinDto.Password))
+                {
+                    var token = _jwtTokenProviderService.GenerateToken(user.Name, user.UserID, user.RoleID);
+                    return Ok(new { token, user = user.MapToUserViewDto() });
+                }
+                return Unauthorized(new { message = "Incorrect password" });
+            }
+            catch(Exception ex)
             {
-                var token = _jwtTokenProviderService.GenerateToken(user.Name, user.UserID, user.RoleID);
-                return Ok(new { token, user = user.MapToUserViewDto() });
+                return NotFound(new { status = "error", message = ex.Message });
             }
-
-            return Unauthorized("Invalid password!");
         }
 
         [Authorize]
@@ -116,7 +122,7 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
             }
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetUser()
         {
@@ -135,7 +141,7 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
             return Ok(user.MapToUserViewDto());
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserDto updateUserDto)
         {
@@ -156,16 +162,16 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
             return Ok(userList);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("registerseller")]
         public async Task<IActionResult> RegisterSeller()
         {
             var userId = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             await _clientRepository.RegisterSellerAsync(Convert.ToInt32(userId));
-            return Ok();
+            return Ok(new {message = "Register successfully"});
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPut("resetpassword")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto resetPasswordDto)
         {
@@ -176,14 +182,13 @@ namespace HeThongMoiGioiDoCu.Controllers.Clients
                 return NotFound("User not found");
             }
 
-            string hashedCurrentPassword = _accountService.HashPassword(resetPasswordDto.CurrentPassword);
-
-            if (!_accountService.VerifyPassword(user.HashedPassword, hashedCurrentPassword))
+            if (!_accountService.VerifyPassword(user.HashedPassword, resetPasswordDto.CurrentPassword))
             {
                 return BadRequest("Password is incorrect");
             }
-            await _clientRepository.ResetPasswordAsync(resetPasswordDto.NewPassword, Convert.ToInt32(userId));
-            return Ok(user);
+            string hashedNewPassword = _accountService.HashPassword(resetPasswordDto.NewPassword);
+            await _clientRepository.ResetPasswordAsync(hashedNewPassword, Convert.ToInt32(userId));
+            return Ok(new {message = "Change password successfully!"});
         }
     }
 }

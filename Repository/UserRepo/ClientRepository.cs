@@ -50,6 +50,12 @@ namespace AgainPBL3.Repository.UserRepo
             {
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
+                int userId = user.UserID;
+                var cart = new Cart
+                {
+                    UserID = userId,
+                };
+                _context.Carts.Add(cart);
             }           
             catch (Exception ex)
             {

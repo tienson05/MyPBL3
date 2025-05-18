@@ -44,5 +44,8 @@ namespace AgainPBL3.Models
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime? UpdatedAt { get; set; }
+
+        [NotMapped]
+        public int Quantity { get; set; }
     }
 }

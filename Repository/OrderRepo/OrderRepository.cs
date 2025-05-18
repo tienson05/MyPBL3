@@ -108,7 +108,7 @@ namespace AgainPBL3.Repository.OrderRepo
 
         public async Task<Order?> UpdateOrder(int OrderID, int BuyerId, int VendorID, decimal TotalPrice, string Status, int OrderDetailID, int ProductID, int price, string CancelReason, string PayMethod, int Quantity)
         {
-            var orderUpdate = await _context.Orders.Include(o=> o.OrderDetails).FirstOrDefaultAsync(o=>o.OrderID==OrderID);
+            var orderUpdate = await _context.Orders.FirstOrDefaultAsync(o => o.OrderID==OrderID);
             if (orderUpdate == null)
             {
                 return null;
@@ -119,12 +119,12 @@ namespace AgainPBL3.Repository.OrderRepo
             orderUpdate.Status = Status;
             orderUpdate.CancelReason = CancelReason;
             orderUpdate.PayMethod = PayMethod;
-            var orderDetail = await _context.OrderDetails.FirstOrDefaultAsync(o=>o.OrderDetailID ==OrderDetailID);
+            var orderDetail = await _context.OrderDetails.FirstOrDefaultAsync(o => o.OrderDetailID == OrderDetailID);
             if (orderDetail == null)
             {
                 return null;
             }
-            orderDetail.ProductID = OrderID;
+            orderDetail.ProductID = ProductID;
             orderDetail.Price = price;
             orderDetail.Quantity = Quantity;
             await _context.SaveChangesAsync();

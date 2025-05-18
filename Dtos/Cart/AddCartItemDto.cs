@@ -2,8 +2,7 @@
 {
     public class AddCartItemDto
     {
-        public int userId {  get; set; }
-        public int productId { get; set; }
-        public int quantity { get; set; }   
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }   
     }
 }

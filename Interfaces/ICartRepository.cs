@@ -7,9 +7,10 @@ namespace AgainPBL3.Interfaces
         //Task<Cart> AddCart(Cart c);
         Task<Cart> AddCartItemtToCart(int userId,int productId, int quantity);
         Task<CartItem> UpdateCartItemQuantity(int CartItemId, int quantity);
-        Task<Cart?> RemoveCart(int cartItemId);
+        Task<Cart?> RemoveCart(int cartId);
         Task<Cart> GetCartByID(int Id);
-        Task<Cart> GetCartByUserID(int userId);
+        Task<int> GetCartIdByUserId(int userId);
+        Task<List<Product>> GetCartByUserID(int userId);
         Task<CartItem?> RemoveItemFromCart(int cartItemId);
 
     }

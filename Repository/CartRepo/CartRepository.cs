@@ -33,9 +33,7 @@ namespace AgainPBL3.Repository.CartRepo
             {
                 throw new ArgumentException("Quantity must be greater than 0.");
             }
-            var cart = await _context.Carts
-                .Include(c => c.CartItems)
-                .FirstOrDefaultAsync(c => c.UserID == userId);
+            var cart = await _context.Carts.FirstOrDefaultAsync(c => c.UserID == userId);
 
             if (cart == null)
             {
@@ -43,10 +41,10 @@ namespace AgainPBL3.Repository.CartRepo
                 _context.Carts.Add(cart);
             }
 
-            var cartItem = cart.CartItems.FirstOrDefault(ci => ci.ProductID == productId);
+            var cartItem = _context.CartItems.FirstOrDefault(ci => ci.ProductID == productId);
             if (cartItem != null)
             {
-                cartItem.Quantity += quantity;
+                cartItem.Quantity = quantity;            
             }
             else
             {
@@ -59,6 +57,7 @@ namespace AgainPBL3.Repository.CartRepo
 
             await _context.SaveChangesAsync();
             return await GetCartByID(cart.Id);
+
         }
 
         public async Task<Cart> GetCartByID(int Id)
@@ -68,10 +67,26 @@ namespace AgainPBL3.Repository.CartRepo
                         .FirstOrDefaultAsync(c => c.Id == Id);
         }
 
-        public async Task<Cart> GetCartByUserID(int userId)
+        public async Task<List<Product>> GetCartByUserID(int userId)
         {
-            return await _context.Carts.Include(c => c.CartItems)
-                .FirstOrDefaultAsync(c => c.UserID == userId);
+            var cart = await _context.Carts.FirstOrDefaultAsync(c => c.UserID == userId);
+            List<CartItem> cartItem = await _context.CartItems.Where(c => c.CartId == cart.Id).ToListAsync();
+            if (cartItem == null) {
+                throw new Exception("Error");
+            }
+            List<Product> products = new List<Product>();
+            foreach (var item in cartItem) { 
+                int id = item.ProductID;
+                var product = await _context.Products.FirstOrDefaultAsync(p => p.ProductID == id);
+                product.Quantity = item.Quantity;
+                products.Add(product);
+            }
+            return products;
+        }
+        public async Task<int> GetCartIdByUserId(int userId)
+        {
+            var cart = await _context.Carts.FirstOrDefaultAsync(c => c.UserID == userId);           
+            return cart.Id;
         }
 
         public async Task<Cart?> RemoveCart(int cartId)

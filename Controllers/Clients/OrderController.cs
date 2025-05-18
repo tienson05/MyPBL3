@@ -53,7 +53,7 @@ namespace AgainPBL3.Controllers.Clients
             return Ok(result);
         }
         [Authorize]
-        [HttpDelete("id")]
+        [HttpDelete]
         public async Task<ActionResult> DeleteOrder(int id)
         {
             var delID = await _orderRepository.DeleteOrder(id);
@@ -65,18 +65,18 @@ namespace AgainPBL3.Controllers.Clients
         public async Task<ActionResult<Order>> AddOrder([FromBody] OrderDto dto)
         {
             var order = dto.OrderDtoToOrder();
-            _orderRepository.AddOrder(order);
+            await _orderRepository.AddOrder(order);
             var savedOrder = await _orderRepository.GetDetailOrderByID(order.OrderID);
-            //var returnOrder = savedOrder.Map
             return CreatedAtAction(nameof(GetOrderByID), new { id = order.OrderID }, order);
         }
-        [HttpPut ("id")]
-        public async Task<ActionResult<Order>> UpdateOrder(int id, [FromBody] OrderUpdateDto dto)
+        [HttpPut]
+        public async Task<IActionResult> UpdateOrder([FromQuery] String id, [FromBody] OrderUpdateDto dto)
         {
-            var UpdateOrder = await _orderRepository.UpdateOrder(id, dto.BuyerId, dto.VendorID, dto.TotalPrice, dto.Status, dto.OrderDetailID, dto.ProductID, dto.Price,dto.CancelReason,dto.PayMethod,dto.Quantity);
+            int temp = Convert.ToInt32(id);
+            var UpdateOrder = await _orderRepository.UpdateOrder(temp, dto.BuyerId, dto.VendorID, dto.TotalPrice, dto.Status, dto.OrderDetailID, dto.ProductID, dto.Price,dto.CancelReason,dto.PayMethod,dto.Quantity);
             if (UpdateOrder == null)
                 return NotFound();
-            return Ok(UpdateOrder);
+            return Ok(new { status = "success", message = "Canceled successfully" });
         }
 
     }
